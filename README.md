@@ -201,14 +201,6 @@ npm run test:watch     # Executa testes em modo watch
 npm run test:coverage  # Gera relatório de cobertura
 ```
 
-### 📈 Métricas de Qualidade
-- **Testes unitários** para componentes isolados
-- **Testes de integração** entre componentes
-- **Mocks** para serviços externos
-- **Snapshots** para consistência de UI
-
----
-
 # 🌬️ Como Executar
 
 ### Pré-requisitos
