@@ -1,89 +1,267 @@
+# 🎓 Sistema de Faculdade
 
-# 🎓 Desafio Técnico — Sistema de Faculdade 
+[![React](https://img.shields.io/badge/React-19.1.1-61DAFB?style=flat&logo=react&logoColor=white)](https://reactjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.8.3-3178C6?style=flat&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Vite](https://img.shields.io/badge/Vite-7.1.0-646CFF?style=flat&logo=vite&logoColor=white)](https://vitejs.dev/)
+[![React Router](https://img.shields.io/badge/React_Router-7.8.0-CA4245?style=flat&logo=react-router&logoColor=white)](https://reactrouter.com/)
+[![Axios](https://img.shields.io/badge/Axios-1.11.0-5A29E4?style=flat&logo=axios&logoColor=white)](https://axios-http.com/)
+[![Jest](https://img.shields.io/badge/Jest-30.0.5-C21325?style=flat&logo=jest&logoColor=white)](https://jestjs.io/)
 
-## 📌 Objetivo
-
-Criar uma **API RESTful** para gerenciar um sistema acadêmico com **alunos, professores e disciplinas**.  
-A aplicação deverá permitir **matrícula de alunos**, **lançamento de notas por professores** e **visualização dessas informações** por meio da API.  
-A **autenticação será feita via JWT**.
-
----
-
-## 📚 Regras
-
-- Um aluno pode se matricular em várias disciplinas  
-- Um professor pode ministrar várias disciplinas  
-- Um aluno só pode ter **uma nota por disciplina**  
-- Apenas o **professor responsável** pode lançar notas para sua disciplina  
-- A autenticação e autorização devem ser feitas com **JWT**
+O **Sistema de Faculdade** é uma aplicação web moderna desenvolvida com React 19 e TypeScript que oferece uma interface completa para gerenciamento acadêmico. O sistema permite a administração de alunos, professores, disciplinas e matrículas com diferentes níveis de acesso baseados em perfis de usuário.
 
 ---
 
-## ✅ Funcionalidades
+## 🧠 Tecnologias Utilizadas
 
-### 👨‍🎓 Aluno pode:
-- Fazer login  
-- Ver suas disciplinas matriculadas  
-- Ver suas notas
+### Frontend
 
-### 👩‍🏫 Professor pode:
-- Fazer login  
-- Ver as disciplinas que ministra  
-- Ver os alunos de cada disciplina  
-- Lançar ou editar nota dos alunos
+- **React 19:** Biblioteca JavaScript mais recente para construção de interfaces de usuário
+- **TypeScript 5.8:** Linguagem de programação tipada que compila para JavaScript
+- **Vite 7.1:** Ferramenta de build moderna e ultra-rápida para projetos frontend
+- **React Router Dom 7.8:** Gerenciamento avançado de rotas e navegação
+- **Axios 1.11:** Cliente HTTP para realizar requisições à API com interceptors
+- **CSS Puro:** Estilização sem dependências externas com variáveis CSS
+- **Jest 30.0:** Framework de testes unitários
+- **React Testing Library 16.3:** Biblioteca para testes de componentes React
 
-### 🛠️ Admin pode:
-- Fazer login  
-- Cadastrar, editar e remover:
-  - Alunos  
-  - Professores  
-  - Disciplinas  
-- Matricular alunos nas disciplinas  
-- Atribuir professores às disciplinas
+### Padrões e Arquitetura
 
----
-
-## 🧩 Entidades
-
-### `Aluno`
-- `id`
-- `nome`
-- `email`
-- `matricula`
-- `senha`
-
-### `Professor`
-- `id`
-- `nome`
-- `email`
-- `senha`
-
-### `Disciplina`
-- `id`
-- `nome`
-- `codigo`
-- `professor_id`
-
-### `Matrícula`
-- `id`
-- `aluno_id`
-- `disciplina_id`
-- `nota`
-
-### `Usuário` (genérico para login)
-- `email`
-- `senha`
-- `tipo` (`ADMIN`, `ALUNO`, `PROFESSOR`)
-- `referenciaId` (vínculo com aluno ou professor)
+- **Custom Hooks:** Reutilização de lógica de estado e efeitos
+- **Context API:** Gerenciamento de estado global para autenticação
+- **Component-Based Architecture:** Componentes reutilizáveis e modulares
+- **Service Layer Pattern:** Abstração da comunicação com API
+- **Protected Routes:** Controle de acesso baseado em autenticação
+- **Role-Based Access Control:** Sistema de permissões por perfil de usuário
+- **Design Responsivo:** Layout adaptável para dispositivos móveis e desktop
 
 ---
 
-## 🛠️ Tecnologias obrigatórias
+## 📂 Estrutura do Projeto
 
-- Java com Spring Boot  
-- Spring Security com JWT  
-- Banco de dados relacional (**PostgreSQL**, **MySQL** ou **H2**)  
-- Toda comunicação deve ser feita via **JSON**  
-- Dados devem ser **persistidos** (não podem se perder ao reiniciar)  
-- Documentação da API com **Swagger**  
-- Banco NoSQL (**MongoDB**) para **logs**
+```
+src/
+├── components/         # Componentes React
+│   ├── __tests__/      # Testes para componentes
+│   ├── form/           # Componentes de formulário
+│   │   └── __tests__/  # Testes para componentes de formulário
+│   ├── generic/        # Componentes genéricos reutilizáveis
+│   │   └── __tests__/  # Testes para componentes genéricos
+│   └── style/          # Estilos específicos dos componentes
+├── pages/              # Páginas/rotas da aplicação
+│   ├── __tests__/      # Testes para páginas
+│   └── style/          # Estilos específicos das páginas
+├── hooks/              # Custom hooks React
+│   └── __tests__/      # Testes para hooks
+├── contexts/           # Contextos React para estado global
+├── service/            # Serviços para comunicação com API
+│   └── __tests__/      # Testes para serviços
+├── types/              # Definições de tipos TypeScript
+├── utils/              # Funções utilitárias
+├── assets/             # Recursos estáticos (imagens, ícones)
+├── setupTests.ts       # Configuração global para testes
+└── index.css           # Estilos globais da aplicação
+```
+
+## 🗺️ Páginas Principais
+
+### 🔸 Home (Dashboard)
+- Página inicial com banner de boas-vindas
+- Navegação centralizada para todas as funcionalidades
+
+### 🔸 Login
+- Sistema de autenticação seguro com JWT
+- Validação de credenciais
+- Persistência de sessão no localStorage
+
+### 🔸 Alunos
+- **Listar Alunos:** Visualização paginada de todos os alunos (Admin/Professor)
+- **Cadastrar Aluno:** Formulário para registro de novos alunos (Admin/Professor)
+- **Editar Aluno:** Formulário para alterar dados do aluno (Admin/Professor)
+- **Buscar Aluno:** Pesquisa de aluno por ID (Admin/Professor)
+- **Perfil do Aluno:** Visualização dos próprios dados (Aluno)
+
+### 🔸 Professores
+- **Listar Professores:** Visualização paginada de todos os professores (Admin)
+- **Cadastrar Professor:** Formulário para registro de novos professores (Admin)
+- **Editar Professor:** Formulário para alterar dados do professor (Admin)
+- **Buscar Professor:** Pesquisa de professor por ID (Admin)
+- **Perfil do Professor:** Visualização dos próprios dados (Professor)
+
+### 🔸 Disciplinas
+- **Listar Disciplinas:** Visualização de todas as disciplinas (Admin/Professor)
+- **Cadastrar Disciplina:** Formulário para criação de disciplinas (Admin/Professor)
+- **Editar Disciplina:** Formulário para alterar dados da disciplina (Admin/Professor)
+- **Buscar Disciplina:** Pesquisa de disciplina por ID (Admin/Professor)
+
+### 🔸 Matrículas
+- **Listar Matrículas:** Visualização de todas as matrículas com paginação (Admin/Professor)
+- **Cadastrar Matrícula:** Formulário para criação de novas matrículas (Admin)
+- **Buscar Matrícula:** Pesquisa de matrícula por ID (Todos)
+- **Atualizar Notas:** Interface para atribuição e edição de notas (Admin/Professor)
+
+---
+
+## ⚙️ Funcionalidades Principais
+
+### ✔️ Sistema de Autenticação e Autorização
+- Login seguro com JWT (JSON Web Token)
+- Três níveis de acesso: **ROLE_ADMIN**, **ROLE_PROFESSOR**, **ROLE_ALUNO**
+- Rotas protegidas baseadas no status de autenticação
+- Controle de acesso por componente baseado no perfil do usuário
+- Persistência automática da sessão
+
+### ✔️ Gestão de Alunos
+- Cadastro com validação de campos (nome, email, matrícula, senha)
+- Listagem paginada com controles de navegação
+- Funcionalidade de busca por ID
+- Edição e exclusão de registros (Admin/Professor)
+- Validação de email e matrícula únicos
+
+### ✔️ Gestão de Professores
+- Cadastro completo de professores (Admin)
+- Listagem paginada com informações detalhadas
+- Busca individual por ID
+- Edição e exclusão de registros (Admin)
+- Validação de dados obrigatórios
+
+### ✔️ Gestão de Disciplinas
+- Criação de disciplinas com nome e carga horária
+- Listagem de todas as disciplinas disponíveis
+- Busca específica por ID
+- Edição e exclusão (Admin/Professor)
+
+### ✔️ Gestão de Matrículas
+- Criação de matrículas relacionando aluno e disciplina
+- Sistema de notas (Nota 1 e Nota 2) com validação (0-10)
+- Status automático baseado nas notas:
+  - **PENDENTE:** Sem notas atribuídas
+  - **APROVADA:** Média ≥ 6.0
+  - **REPROVADA:** Média < 6.0
+- Interface de atualização de notas para professores
+- Histórico completo de matrículas por aluno
+
+---
+
+## 🚦 Controle de Acesso por Perfil
+
+### 👨‍💼 ROLE_ADMIN
+- **Acesso total** ao sistema
+- Pode gerenciar alunos, professores, disciplinas e matrículas
+- Pode atribuir e editar notas
+- Pode excluir registros em todas as entidades
+
+### 👨‍🏫 ROLE_PROFESSOR  
+- Pode **visualizar e gerenciar** alunos e disciplinas
+- Pode **listar matrículas** e **atualizar notas**
+- Pode **buscar** informações por ID
+- **Não pode** gerenciar outros professores
+- **Não pode** excluir matrículas
+
+### 🎓 ROLE_ALUNO
+- Pode **apenas visualizar** seu próprio perfil
+- Pode **buscar matrículas** por ID para consulta
+- **Acesso limitado** às funcionalidades do sistema
+
+---
+
+## 🛑 Validações e Tratamento de Erros
+
+### 📑 Validações de Formulários
+- **Campos obrigatórios** em todos os formulários
+- **Validação de email** com regex específico
+- **Validação de senha** com comprimento mínimo
+- **Validação de notas** entre 0 e 10
+- **Feedback visual** para campos com erro
+- **Mensagens específicas** para cada tipo de validação
+
+### 🔗 Tratamento de Erros de API
+- **Interceptor Axios** para tratamento uniforme de erros
+- **Extração inteligente** de mensagens de erro do backend
+- **Feedback visual** para estados de loading
+- **Mensagens amigáveis** para diferentes tipos de erro
+- **Recuperação automática** de tokens JWT
+
+---
+
+## 🧪 Testes
+
+O projeto utiliza **Jest** e **React Testing Library** para testes abrangentes:
+
+### 📊 Cobertura de Testes
+- **Componentes de formulário:** Validação e submissão
+- **Componentes genéricos:** Reutilização e props
+- **Hooks customizados:** Lógica de negócio
+- **Serviços de API:** Comunicação com backend
+- **Páginas principais:** Integração de componentes
+
+### 🚀 Scripts de Teste
+```bash
+npm run test           # Executa todos os testes
+npm run test:watch     # Executa testes em modo watch
+npm run test:coverage  # Gera relatório de cobertura
+```
+
+### 📈 Métricas de Qualidade
+- **Testes unitários** para componentes isolados
+- **Testes de integração** entre componentes
+- **Mocks** para serviços externos
+- **Snapshots** para consistência de UI
+
+---
+
+# 🌬️ Como Executar
+
+### Pré-requisitos
+
+- **Node.js** (v18 ou superior)  
+- **npm** ou **yarn**  
+- **Clone e configure o repositório do back-end** para funcionamento completo
+
+## Passo a passo para Execução
+
+### 1. Clone o repositório
+```bash
+# Clone o repositório do FRONTEND
+git clone https://github.com/sylviavitoria/faculdade-frontend.git
+cd sistemafaculdade
+
+# Configure também o BACKEND para funcionalidade completa
+# Siga as instruções do repositório backend
+```
+
+### 2. Instale as dependências
+```bash
+npm install
+```
+
+### 3. Execute o projeto em modo de desenvolvimento
+```bash
+npm run dev
+```
+
+### 4. Acesse a aplicação
+Abra seu navegador em: **[http://localhost:5173](http://localhost:5173)**
+
+### 5. Scripts disponíveis
+```bash
+npm run build          # Build de produção
+npm run preview        # Preview do build
+npm run lint           # Verificação de código
+npm run test           # Execução de testes
+npm run test:coverage  # Cobertura de testes
+```
+
+---
+
+## 🔗 Integração com o Backend
+
+Este projeto frontend consome a **API REST** desenvolvida em **Spring Boot** para gerenciamento acadêmico.  
+
+- O backend está disponível em: [faculdade-backend](https://github.com/sylviavitoria/faculdade-backend)  
+- A API fornece endpoints para:
+  - Autenticação e autorização (JWT)
+  - Gestão de Alunos, Professores, Disciplinas e Matrículas
+  - Lançamento e consulta de notas
+  - Logs do sistema (MongoDB)
+  
+> ⚠️ Para funcionalidade completa, configure e execute o backend antes de rodar o frontend.
