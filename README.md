@@ -200,6 +200,7 @@ npm run test           # Executa todos os testes
 npm run test:watch     # Executa testes em modo watch
 npm run test:coverage  # Gera relatório de cobertura
 ```
+---
 
 # 🌬️ Como Executar
 
@@ -215,11 +216,10 @@ npm run test:coverage  # Gera relatório de cobertura
 ```bash
 # Clone o repositório do FRONTEND
 git clone https://github.com/sylviavitoria/faculdade-frontend.git
-cd sistemafaculdade
-
-# Configure também o BACKEND para funcionalidade completa
-# Siga as instruções do repositório backend
+cd faculdade-frontend
 ```
+> ⚠️ Para a funcionalidade completa, é necessário configurar também o **BACKEND**.  
+> Siga as instruções no repositório: [faculdade-backend](https://github.com/sylviavitoria/faculdade-backend)
 
 ### 2. Instale as dependências
 ```bash
@@ -233,15 +233,6 @@ npm run dev
 
 ### 4. Acesse a aplicação
 Abra seu navegador em: **[http://localhost:5173](http://localhost:5173)**
-
-### 5. Scripts disponíveis
-```bash
-npm run build          # Build de produção
-npm run preview        # Preview do build
-npm run lint           # Verificação de código
-npm run test           # Execução de testes
-npm run test:coverage  # Cobertura de testes
-```
 
 ---
 
