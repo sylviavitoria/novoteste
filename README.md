@@ -2,8 +2,18 @@
 [![RestAssured](https://img.shields.io/badge/RestAssured-4.5.0-00BFFF?style=flat&logo=java&logoColor=white)](https://rest-assured.io/)
 [![Java](https://img.shields.io/badge/Java-21-ED8B00?style=flat&logo=openjdk&logoColor=white)](https://openjdk.org/)
 [![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.5.4-6DB33F?style=flat&logo=spring&logoColor=white)](https://spring.io/projects/spring-boot)
+---
+
+## 🔗 Integração com o Backend
+
+Este projeto de testes automatizados consome a **API REST** desenvolvida em **Spring Boot** para gerenciamento acadêmico.  
+
+- O backend está disponível em: [faculdade-backend](https://github.com/sylviavitoria/faculdade-backend)  
+
+---
 
 Este projeto contém testes automatizados para um sistema de gestão de faculdade, utilizando RestAssured para testar a API do sistema.
+
 
 ## Tecnologias Utilizadas
 
@@ -84,22 +94,35 @@ O projeto está organizado em pacotes de testes separados por domínio:
 | [API] Cadastro de matrícula sem alunoId | Verifica se o campo alunoId é obrigatório | Com falha |
 | [API] Cadastro de matrícula sem disciplinaId | Verifica se o campo disciplinaId é obrigatório | Com falha |
 
-## Como Executar os Testes
+---
 
-Para executar os testes, certifique-se de que a aplicação esteja em execução na porta 8080 e execute:
+# 🌬️ Como Executar
 
-```bash
-mvn test
-```
+### Pré-requisitos
 
-Para executar uma classe de teste específica:
-
-```bash
-mvn -Dtest=AlunoApiTest test
-```
-
-## Requisitos
-
-- Java 11 ou superior
+- Java 21 ou superior
 - Maven 3.6 ou superior
+- Clone e configure [repositório do back-end](https://github.com/sylviavitoria/faculdade-backend) para funcionamento completo 
 - API do sistema de faculdade em execução na porta 8080
+
+## Passo a passo para Execução
+
+### 1. Clone o repositório
+```bash
+# Clone o repositório da automação
+git clone https://github.com/sylviavitoria/RestAssuredFaculdade.git
+cd RestAssuredFaculdade
+```
+> ⚠️ Para a funcionalidade completa, é necessário configurar também o **BACKEND**.  
+> Siga as instruções no repositório: [faculdade-backend](https://github.com/sylviavitoria/faculdade-backend)
+
+### 2. Execute os testes:
+```bash
+# Executa todos os testes
+mvn test
+
+```
+> ✅ Alternativamente, você pode abrir o projeto em uma IDE (IntelliJ, Eclipse) e executar os testes diretamente clicando no botão de "run" da classe de teste.
+
+
+
