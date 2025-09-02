@@ -1,128 +1,140 @@
-# Automação de Testes - Sistema de Faculdade
-[![RestAssured](https://img.shields.io/badge/RestAssured-4.5.0-00BFFF?style=flat&logo=java&logoColor=white)](https://rest-assured.io/)
-[![Java](https://img.shields.io/badge/Java-21-ED8B00?style=flat&logo=openjdk&logoColor=white)](https://openjdk.org/)
-[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.5.4-6DB33F?style=flat&logo=spring&logoColor=white)](https://spring.io/projects/spring-boot)
+# Sistema de Gerenciamento Acadêmico - Automação com Cypress
+[![Cypress](https://img.shields.io/badge/Cypress-13.7.0-04C38E?style=flat&logo=cypress&logoColor=white)](https://www.cypress.io/)
+[![Node.js](https://img.shields.io/badge/Node.js-20-43853d?style=flat&logo=node.js&logoColor=white)](https://nodejs.org/)
+[![NPM](https://img.shields.io/badge/NPM-10-CB3837?style=flat&logo=npm&logoColor=white)](https://www.npmjs.com/)
+
+Este projeto contém testes automatizados usando Cypress para um sistema de gerenciamento de faculdade. A automação realiza testes end-to-end para verificar o funcionamento correto das principais funcionalidades do sistema.
+
+## 📌 Cenários de Teste
+
+### 🔑 Login
+
+| Teste | Descrição | Resultado |
+|-------|-----------|-----------|
+| [SF] Login de usuário (admin) | Verifica se é possível fazer login com credenciais válidas | Com sucesso |
+| [SF] Login com usuário inválido | Verifica se não é possível logar com um usuário inexistente | Com falha |
+| [SF] Login com senha incorreta | Verifica se não é possível logar com senha incorreta | Com falha |
+| [SF] Login com campos em branco | Verifica se não é possível logar sem preencher os campos | Com falha |
+| [SF] Login com usuário em branco | Verifica se o campo usuário é obrigatório | Com falha |
+| [SF] Login com senha em branco | Verifica se o campo senha é obrigatório | Com falha |
+
 ---
 
-## 🔗 Integração com o Backend
+### 👨‍🎓 Aluno
 
-Este projeto de testes automatizados consome a **API REST** desenvolvida em **Spring Boot** para gerenciamento acadêmico.  
-
-- O backend está disponível em: [faculdade-backend](https://github.com/sylviavitoria/faculdade-backend)  
+| Teste | Descrição | Resultado |
+|-------|-----------|-----------|
+| [SF] Cadastro de novo aluno com dados válidos | Verifica se é possível cadastrar um aluno corretamente | Com sucesso |
+| [SF] Cadastro de aluno sem nome | Verifica se o campo nome é obrigatório | Com falha |
+| [SF] Cadastro de aluno sem email | Verifica se o campo email é obrigatório | Com falha |
+| [SF] Cadastro de aluno sem senha | Verifica se o campo senha é obrigatório | Com falha |
 
 ---
 
-Este projeto contém testes automatizados para um sistema de gestão de faculdade, utilizando RestAssured para testar a API do sistema.
-
-
-## Tecnologias Utilizadas
-
-- Java
-- JUnit 5
-- RestAssured
-- Maven
-
-## Estrutura do Projeto
-
-O projeto está organizado em pacotes de testes separados por domínio:
-
-- `AuthApiTest`: Testes relacionados à autenticação e autorização
-- `AlunoApiTest`: Testes relacionados aos endpoints de alunos
-- `ProfessorApiTest`: Testes relacionados aos endpoints de professores
-- `DisciplinaApiTest`: Testes relacionados aos endpoints de disciplinas
-- `MatriculaApiTest`: Testes relacionados aos endpoints de matrículas
-
-## Levantamento de Testes
-
-### Autenticação e Permissões
+### 👨‍🏫 Professor
 
 | Teste | Descrição | Resultado |
 |-------|-----------|-----------|
-| [API] Login de usuário (admin, professor, aluno) | Verifica se é possível fazer login com diferentes perfis | Com sucesso |
-| [API] Login com senha incorreta | Verifica se a autenticação falha com senha incorreta | Com falha |
-| [API] Acesso a endpoint protegido sem token | Verifica se não é possível acessar recursos protegidos sem token | Com falha |
-| [API] Acesso a endpoint protegido com token inválido ou sem permissão | Verifica se não é possível acessar recursos protegidos com token inválido | Com falha |
+| [SF] Cadastro de novo professor com dados válidos | Verifica se é possível cadastrar um professor corretamente | Com sucesso |
+| [SF] Cadastro de professor sem nome | Verifica se o campo nome é obrigatório | Com falha |
+| [SF] Cadastro de professor sem email | Verifica se o campo email é obrigatório | Com falha |
+| [SF] Cadastro de professor sem senha | Verifica se o campo senha é obrigatório | Com falha |
+| [SF] Cadastro de professor com email já existente | Verifica se não é possível cadastrar professor com email duplicado | Com falha |
 
-### Aluno
+---
 
-| Teste | Descrição | Resultado |
-|-------|-----------|-----------|
-| [API] Cadastro de novo aluno com dados válidos | Verifica se é possível cadastrar um aluno com todos os dados corretos | Com sucesso |
-| [API] Cadastro de novo aluno com email ou matrícula já existente | Verifica se não é possível cadastrar aluno com dados duplicados | Com falha |
-| [API] Listagem paginada de alunos | Verifica se é possível listar alunos com paginação | Com sucesso |
-| [API] Aluno tentando criar disciplina | Verifica se alunos não podem criar disciplinas | Com falha |
-| [API] Aluno tentando criar professor | Verifica se alunos não podem criar professores | Com falha |
-| [API] Aluno tentando criar outro aluno | Verifica se alunos não podem criar outros alunos | Com falha |
-| [API] Cadastro de aluno sem nome | Verifica se o campo nome é obrigatório | Com falha |
-| [API] Cadastro de aluno sem email | Verifica se o campo email é obrigatório | Com falha |
-| [API] Cadastro de aluno sem senha | Verifica se o campo senha é obrigatório | Com falha |
-
-### Professor
+### 📚 Disciplina
 
 | Teste | Descrição | Resultado |
 |-------|-----------|-----------|
-| [API] Cadastro de novo professor com dados válidos | Verifica se é possível cadastrar um professor com todos os dados corretos | Com sucesso |
-| [API] Cadastro de novo professor com email já existente | Verifica se não é possível cadastrar professor com email duplicado | Com falha |
-| [API] Listagem paginada de professores | Verifica se é possível listar professores com paginação | Com sucesso |
-| [API] Professor tentando criar disciplina | Verifica se professores não podem criar disciplinas | Com falha |
-| [API] Professor tentando criar aluno | Verifica se professores não podem criar alunos | Com falha |
-| [API] Professor tentando criar outro professor | Verifica se professores não podem criar outros professores | Com falha |
-| [API] Cadastro de professor sem nome | Verifica se o campo nome é obrigatório | Com falha |
-| [API] Cadastro de professor sem email | Verifica se o campo email é obrigatório | Com falha |
-| [API] Cadastro de professor sem senha | Verifica se o campo senha é obrigatório | Com falha |
+| [SF] Cadastro de nova disciplina com código único | Verifica se é possível cadastrar uma disciplina corretamente | Com sucesso |
+| [SF] Cadastro de disciplina sem nome | Verifica se o campo nome é obrigatório | Com falha |
+| [SF] Cadastro de disciplina sem código | Verifica se o campo código é obrigatório | Com falha |
+| [SF] Cadastro de disciplina com código já existente | Verifica se não é possível cadastrar disciplina com código duplicado | Com falha |
 
-### Disciplina
+---
+
+### 📝 Matrícula
 
 | Teste | Descrição | Resultado |
 |-------|-----------|-----------|
-| [API] Cadastro de nova disciplina com código único | Verifica se é possível cadastrar uma disciplina com dados válidos | Com sucesso |
-| [API] Cadastro de disciplina com código já existente | Verifica se não é possível cadastrar disciplina com código duplicado | Com falha |
-| [API] Listagem de disciplinas (admin, professor e aluno) | Verifica se todos os perfis podem listar disciplinas | Com sucesso |
-| [API] Cadastro de disciplina sem nome | Verifica se o campo nome é obrigatório | Com falha |
-| [API] Cadastro de disciplina sem código | Verifica se o campo código é obrigatório | Com falha |
-| [API] Cadastro de disciplina sem professorId | Verifica se o campo professorId é obrigatório | Com falha |
-| [API] Professor tentando criar disciplina | Verifica se professores não podem criar disciplinas | Com falha |
-| [API] Aluno tentando criar disciplina | Verifica se alunos não podem criar disciplinas | Com falha |
+| [SF] Matrícula com dados válidos | Verifica se é possível matricular um aluno em disciplina corretamente | Com sucesso |
+| [SF] Matrícula sem seleção de aluno | Verifica se o campo aluno é obrigatório | Com falha |
+| [SF] Matrícula sem seleção de disciplina | Verifica se o campo disciplina é obrigatório | Com falha |
+| [SF] Matrícula duplicada em disciplina | Verifica se não é possível matricular o mesmo aluno duas vezes na mesma disciplina | Com falha |
 
-### Matrícula
+---
 
-| Teste | Descrição | Resultado |
-|-------|-----------|-----------|
-| [API] Matrícula de aluno em disciplina (válida) | Verifica se é possível matricular aluno em disciplina | Com sucesso |
-| [API] Matrícula duplicada em disciplina | Verifica se não é possível cadastrar matrícula duplicada | Com falha |
-| [API] Professor tentando cadastrar matrícula | Verifica se professores não podem cadastrar matrículas | Com falha |
-| [API] Cadastro de matrícula sem alunoId | Verifica se o campo alunoId é obrigatório | Com falha |
-| [API] Cadastro de matrícula sem disciplinaId | Verifica se o campo disciplinaId é obrigatório | Com falha |
+## 📁 Estrutura do Projeto
 
+```
+cypress/
+│
+├── e2e/
+│   └── tests/
+│       ├── Aluno.cy.js       # Testes de cadastro de alunos
+│       ├── Disciplina.cy.js  # Testes de cadastro de disciplinas
+│       ├── Login.cy.js       # Testes de login
+│       ├── Matricula.cy.js   # Testes de matrícula de alunos em disciplinas
+│       └── Professor.cy.js   # Testes de cadastro de professores
+│
+│
+└── support/
+    ├── commands.js           # Comandos personalizados do Cypress
+    └── e2e.js                # Configurações globais para testes e2e
+```
 ---
 
 # 🌬️ Como Executar
 
-### Pré-requisitos
+### 🛠️ Pré-requisitos
 
-- Java 21 ou superior
-- Maven 3.6 ou superior
-- Clone e configure [repositório do back-end](https://github.com/sylviavitoria/faculdade-backend) para funcionamento completo 
-- API do sistema de faculdade em execução na porta 8080
+- [Node.js](https://nodejs.org/) (versão recomendada: 14 ou superior)
+- NPM (geralmente instalado com o Node.js)
+- Configuração do ambiente completo:  
+  - [faculdade-backend](https://github.com/sylviavitoria/faculdade-backend)  
+  - [faculdade-frontend](https://github.com/sylviavitoria/faculdade-frontend)  
 
-## Passo a passo para Execução
+> ⚠️ É necessário ter **BACKEND** e **FRONTEND** rodando para execução correta dos testes end-to-end.
 
-### 1. Clone o repositório
+## 💻 Passo a passo para Execução
+
+1. Clone o repositório:
 ```bash
-# Clone o repositório da automação
-git clone https://github.com/sylviavitoria/RestAssuredFaculdade.git
-cd RestAssuredFaculdade
+git clone https://github.com/sylviavitoria/CypressFaculdade.git
 ```
-> ⚠️ Para a funcionalidade completa, é necessário configurar também o **BACKEND**.  
-> Siga as instruções no repositório: [faculdade-backend](https://github.com/sylviavitoria/faculdade-backend)
+> ⚠️ Para a funcionalidade completa, é necessário configurar também o **BACKEND** e o **FRONTEND**.  
+> Siga as instruções dos repositórios: [faculdade-backend](https://github.com/sylviavitoria/faculdade-backend) e [faculdade-frontend](https://github.com/sylviavitoria/faculdade-frontend)
 
-### 2. Execute os testes:
+2. Suba o backend e o frontend seguindo os comandos de execução nos respectivos repositórios.
+
+3. Após subir backend e o frontend navegue até o diretório do projeto:
 ```bash
-# Executa todos os testes
-mvn test
-
+cd CypressFaculdade
 ```
-> ✅ Alternativamente, você pode abrir o projeto em uma IDE (IntelliJ, Eclipse) e executar os testes diretamente clicando no botão de "run" da classe de teste.
+
+4. Instale as dependências:
+```bash
+npm install
+```
+
+5. Você pode executar os testes da seguinte forma:
+
+   - **Interface do Cypress**  
+     
+     Para abrir a interface do Cypress e executar os testes manualmente:  
+```bash
+npx cypress open
+```
+
+   - **Linha de Comando**  
+     
+     Para executar todos os testes via linha de comando:
+```bash
+npx cypress run
+```
+
+
 
 
 
